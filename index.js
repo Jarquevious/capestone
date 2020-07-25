@@ -15,12 +15,7 @@ app.use(expressValidator());
 require('./controllers/reviews.js')(app);
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-app.get('/', (req, res) => {
-  res.render('home');
-})
-app.get('/reviews/new', (req, res) => {
-  res.render('reviews-new.handlebars');
-})
+
 
 // Choose a port to listen on
 const port = process.env.PORT || 3000;

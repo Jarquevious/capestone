@@ -1,0 +1,25 @@
+<div class="row w-75 m-auto">
+ 
+        <ul class="mt-5">
+          {{#each reviews}}
+           <li class="list-group-item">
+            <div class="lead">
+              <a href="/reviews/{{this._id}}" class="lead">{{this.name}}</a>
+            </div>
+            <a href="{{this.url}}" target="_blank">{{this.url}}</a>
+            <div class="text-right">
+              <a href="/n/{{this.summary}}">{{this.summary}}</a>
+            </div>
+
+              {{!-- <form class="vote-up" data-id="{{this._id}}" action="/posts/{{this._id}}/vote-up">
+                <button type="submit">Vote Up</button>
+              </form>
+              |
+              <form class="vote-down" data-id="{{this._id}}" action="/posts/{{this._id}}/vote-down">
+                <button type="submit">Vote Down</button>
+              </form> --}}
+          </li>
+          {{/each}}
+        </ul>
+
+</div>
