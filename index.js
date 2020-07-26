@@ -4,9 +4,11 @@ const app = express()
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+
 // Use Body Parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 // Set db
 require('./data/eduyelp-db');
 
@@ -24,3 +26,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log('App listening on port 3000!')
 })
+
+module.exports = app;
