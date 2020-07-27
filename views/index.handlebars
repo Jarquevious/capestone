@@ -1,0 +1,140 @@
+
+                    <header class="page-header page-header-dark bg-img-cover overlay" style='background-image: url("https://source.unsplash.com/hrlvr2ZlUNk/1500x700")'>
+                        <div class="page-header-content">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-xl-8 col-lg-10 text-center">
+                                        <h1 class="page-header-title">Find the best businesses in town</h1>
+                                        <p class="page-header-text mb-5">Search for restaurants, contractors, and other local businesses in your area to find out which ones are the best!</p>
+                                        <form class="page-header-signup" action="/find/schools" method="POST">
+                                            <div class="form-row justify-content-center">
+                                                <div class="col-lg-6 col-md-8">
+                                                    <div class="form-group mr-0 mr-lg-2"><label class="sr-only" for="inputSearch">Find local schools...</label><input class="form-control form-control-solid rounded-pill" id="city" name="city" type="text" placeholder="Enter your city..." /></div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4"><button class="btn btn-teal btn-block btn-marketing rounded-pill" type="submit">Find</button></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svg-border-angled text-light">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+                        </div>
+                    </header>
+                    <section class="bg-light py-10">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="mb-5 text-center">
+                                        <div class="text-xs text-uppercase-expanded text-primary mb-2">Browse Businesses</div>
+                                        <p class="lead mb-0">Not sure what to search for? Browse some of the most popular categories.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                {{#if schools}}
+                                    {{#each schools}}
+                                        <div class="col-md-6 col-lg-4 col-xl-3 mb-5">
+                                            <a class="card lift" href="/detail/{{this.alias}}">
+                                                <img class="card-img-top" width="350px" height="200px" src="{{this.image_url}}" alt="{{this.name}}e" />
+                                                <div class="card-body text-center py-3">
+                                                    <h6 class="card-title mb-0">{{this.name}}</h6>
+                                                    <p class="card-text mb-0">{{this.review_count}} Reviews | {{this.rating}} 
+                                                        <i class="fa fa-star text-success" aria-hidden="true"></i>
+                                                    </p>
+                                                    <p class="card-text">
+                                                        <small>
+                                                            {{this.location.address1}} {{this.location.address2}}
+                                                            {{this.location.city}} {{this.location.zip_code}}
+                                                        </small>
+                                                    </p>
+                                                    <p class="card-text">
+                                                        {{#if this.is_closed }} 
+                                                            <p class="card-text mb-0">Closed</p> 
+                                                        {{else}}
+                                                            <p class="card-text mb-0">Open</p> 
+                                                        {{/if}}
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="svg-border-angled text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+                        </div>
+                    </section>
+                    <section class="bg-white pt-5 pb-10">
+                        <div class="container">
+                            <div class="card mt-n15 mb-10 z-1">
+                                <div class="card-body p-5">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-6">
+                                            <h4>Get the latest news</h4>
+                                            <p class="lead text-gray-500 mb-0">Stay in the loop with the latest updates and features added to our application!</p>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-group mb-2">
+                                                <input class="form-control form-control-solid" type="text" placeholder="youremail@example.com" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                                <div class="input-group-append"><button class="btn btn-primary" id="button-addon2" type="button">Sign up</button></div>
+                                            </div>
+                                            <div class="small text-gray-500">You can unsubscribe at any time.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="mb-5 text-center">
+                                        <div class="text-xs text-uppercase-expanded text-primary mb-2">New Businesses</div>
+                                        <p class="lead mb-0">Here are some of the most popular new businesses in your area.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 mb-5 mb-lg-0">
+                                    <a class="card lift" href="#!"
+                                        ><img class="card-img-top" src="https://source.unsplash.com/E6HjQaB7UEA/800x500" alt="..." />
+                                        <div class="card-body text-center py-3">
+                                            <h6 class="card-title mb-0">The Bamboo Ranch</h6>
+                                            <div class="text-yellow"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                            <div class="small mb-2">(12 Reviews)</div>
+                                            <div class="small">Upper West Ceon, Gram</div>
+                                        </div>
+                                        <div class="card-footer text-center text-xs"><i class="fas fa-store-alt mr-1"></i>Opened 2 weeks ago</div></a
+                                    >
+                                </div>
+                                <div class="col-lg-4 mb-5 mb-lg-0">
+                                    <a class="card lift" href="#!"
+                                        ><img class="card-img-top" src="https://source.unsplash.com/ODNxWmNja2U/800x500" alt="..." />
+                                        <div class="card-body text-center py-3">
+                                            <h6 class="card-title mb-0">Lakeside Oyster</h6>
+                                            <div class="text-yellow"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                            <div class="small mb-2">(8 Reviews)</div>
+                                            <div class="small">East Fom, Kugan</div>
+                                        </div>
+                                        <div class="card-footer text-center text-xs"><i class="fas fa-store-alt mr-1"></i>Opened 1 months ago</div></a
+                                    >
+                                </div>
+                                <div class="col-lg-4">
+                                    <a class="card lift" href="#!"
+                                        ><img class="card-img-top" src="https://source.unsplash.com/sWEpcc0Rm0U/800x500" alt="..." />
+                                        <div class="card-body text-center py-3">
+                                            <h6 class="card-title mb-0">Wild Junction</h6>
+                                            <div class="text-yellow"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></div>
+                                            <div class="small mb-2">(29 Reviews)</div>
+                                            <div class="small">Shotles Wood, Drada</div>
+                                        </div>
+                                        <div class="card-footer text-center text-xs"><i class="fas fa-store-alt mr-1"></i>Opened 2 months ago</div></a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svg-border-angled text-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+                        </div>
+                    </section>
+               
