@@ -26,7 +26,24 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto mr-lg-5">
                                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                            
+                                    {{#if currentUser}}
+      <li class="nav-item active">
+        <a href="/post/new" class="btn btn-primary navbar-btn">New Post</a>
+      </li>
+      {{/if}}
+
+      {{#if currentUser}}
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item pull-">
+          <a class="nav-link" href="/sign-up">Sign up</a>
+        </li>
+      {{/if}}
                                 </ul>
                                 <a class="btn-teal btn rounded-pill px-4 ml-lg-4" href="/review/new">Create review<i class="fas fa-arrow-right ml-1"></i></a>
                             </div>
