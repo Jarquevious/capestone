@@ -1,4 +1,6 @@
 const Review = require('../models/review');
+const Comment = require('../models/comment');
+
 module.exports = app => {
     // CREATE
     app.post("/reviews/new/review", (req, res) => {
@@ -71,7 +73,9 @@ module.exports = app => {
         
         client.business(req.params.id).then(response => {
         let school = response.jsonBody;
-        res.render('review-detail', {school});
+        var comments = Comment.find({"school_alias":school.alias}).lean();
+            console.log(comments)
+        res.render('review-detail', {school, comments});
 
         }).catch(e => {
         console.log(e);

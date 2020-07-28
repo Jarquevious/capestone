@@ -4,3 +4,8 @@
     <p>{{review.summary}}</p>
   </div>
 </div>
+<div class="row w-50 m-auto">
+  {{#each post.comments}}
+    {{> comment comment=this postId=../post._id}}
+  {{/each}}
+</div>
