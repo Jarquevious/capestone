@@ -49,9 +49,18 @@ module.exports = app => {
         
         client.business(req.params.id).then(response => {
         let school = response.jsonBody;
-        var comments = Comment.find({ reviewId: req.params.id }).lean();
-        console.log('This is the comments', comments);
-        res.render('reviews-show', {school, comments});
+
+        Comment.find({ school_alias: { $eq: req.params.id } }).lean()
+        .then(comments => {
+            console.log(comments)
+            res.render('reviews-show', {school, comments});
+        })
+        .catch(err => {
+          console.log(err.message);
+       });
+
+        // var comments = Comment.find({ school_alias: req.params.id }).exec();
+        // console.log('This is the comments', comments);
 
         }).catch(e => {
         console.log(e);
