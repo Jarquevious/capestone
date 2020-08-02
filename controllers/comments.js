@@ -1,6 +1,4 @@
 const Comment = require('../models/comment');
-const Review = require('../models/review');
-const review = require('../models/review');
 
 module.exports = function (app) {
     
@@ -11,7 +9,7 @@ module.exports = function (app) {
         comment
             .save()
             .then(review => {
-                res.redirect(`/detail/${req.params.school_alias}`);
+                res.redirect(`/reviews/${req.params.school_alias}`);
             })
             .catch(err => {
                 console.log(err);

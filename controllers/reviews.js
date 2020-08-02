@@ -28,15 +28,34 @@ module.exports = app => {
      })
     // display single review
      app.get("/reviews/:id", function(req, res) {
-        // LOOK UP THE POST
-        Review.findById(req.params.id).lean()
-        .then(review => {
-            console.log(review)
-            res.render("reviews-show", { review });
-        })
-        .catch(err => {
-            console.log(err.message);
-        });
+        // // LOOK UP THE POST
+        // Review.findById(req.params.id)
+        // .then(review => {
+        //     console.log('This is the comments', comments)
+        //     // Comment.find({ reviewId: req.params.id }).then(comments => {
+        //         // get one comment id
+        //         // respond with the template with both values
+        //         res.render("reviews-show", { review, comments });
+        //     })    
+        // })
+        // .catch(err => {
+        //     console.log(err.message);
+        // });
+        // .find method searches DB for reviews
+        'use strict';
+ 
+        const yelp = require('yelp-fusion');
+        const client = yelp.client('jsMEans2yKbx6lwoAE5zIdt5QKlCCkcIm7MNglC8J2p9ksxZTkLdOUsv_4l1b-9_uJSiTH0n3SCARXd1YQHrNYUeM4ysfJCFKtJtLdHxNBbltq1AF4S4HPtaQf4dX3Yx');
+        
+        client.business(req.params.id).then(response => {
+        let school = response.jsonBody;
+        var comments = Comment.find({ reviewId: req.params.id }).lean();
+        console.log('This is the comments', comments);
+        res.render('reviews-show', {school, comments});
+
+        }).catch(e => {
+        console.log(e);
+        }); 
     });
     
     // Endpoint(route)for create review form
@@ -64,23 +83,23 @@ module.exports = app => {
             console.log(e);
         });
     });
-    app.get('/detail/:id', (req, res) => {
-        // .find method searches DB for reviews
-        'use strict';
+    // app.get('/detail/:id', (req, res) => {
+    //     // .find method searches DB for reviews
+    //     'use strict';
  
-        const yelp = require('yelp-fusion');
-        const client = yelp.client('jsMEans2yKbx6lwoAE5zIdt5QKlCCkcIm7MNglC8J2p9ksxZTkLdOUsv_4l1b-9_uJSiTH0n3SCARXd1YQHrNYUeM4ysfJCFKtJtLdHxNBbltq1AF4S4HPtaQf4dX3Yx');
+    //     const yelp = require('yelp-fusion');
+    //     const client = yelp.client('jsMEans2yKbx6lwoAE5zIdt5QKlCCkcIm7MNglC8J2p9ksxZTkLdOUsv_4l1b-9_uJSiTH0n3SCARXd1YQHrNYUeM4ysfJCFKtJtLdHxNBbltq1AF4S4HPtaQf4dX3Yx');
         
-        client.business(req.params.id).then(response => {
-        let school = response.jsonBody;
-        var comments = Comment.find({"school_alias":school.alias}).lean();
-            console.log(comments)
-        res.render('review-detail', {school, comments});
+    //     client.business(req.params.id).then(response => {
+    //     let school = response.jsonBody;
+    //     var comments = Comment.find({"school_alias":school.alias}).lean();
+    //         console.log(comments)
+    //     res.render('review-detail', {school, comments});
 
-        }).catch(e => {
-        console.log(e);
-        }); 
-     })
+    //     }).catch(e => {
+    //     console.log(e);
+    //     }); 
+    //  })
 
 };
 

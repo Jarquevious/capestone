@@ -6,7 +6,7 @@ const Populate = require("../utils/autopopulate");
 const CommentSchema = new Schema({
     // author : { type: Schema.Types.ObjectId, ref: "User", required: true },
     content: { type: String, required: true },
-    school_alias: { type: String, required: true },
+    school_alias: { type: String }
     // comments: [{type: Schema.Types.ObjectId, ref: "Comment"}] 
 });
 
