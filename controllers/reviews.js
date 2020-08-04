@@ -15,6 +15,20 @@ module.exports = app => {
         })
     });
 
+    function getComments(school_alias) {
+        console.log('Test')
+        Comment.find({})
+            .then(comments => {
+                console.log('Test')
+
+                console.log(`comments:${comments}`) 
+                return comments
+            })
+            .catch(err => {
+                console.log(`err.message:${err.message}`);
+        });
+    };
+        
     // Endpoint to home page. Display Reviews on index page(main page)
     app.get('/', (req, res) => {
         // .find method searches DB for reviews
@@ -27,7 +41,7 @@ module.exports = app => {
        });  
      })
     // display single review
-     app.get("/reviews/:id", function(req, res) {
+     app.get("/reviews/:school_alias", function(req, res) {
         // // LOOK UP THE POST
         // Review.findById(req.params.id)
         // .then(review => {
@@ -47,20 +61,11 @@ module.exports = app => {
         const yelp = require('yelp-fusion');
         const client = yelp.client('jsMEans2yKbx6lwoAE5zIdt5QKlCCkcIm7MNglC8J2p9ksxZTkLdOUsv_4l1b-9_uJSiTH0n3SCARXd1YQHrNYUeM4ysfJCFKtJtLdHxNBbltq1AF4S4HPtaQf4dX3Yx');
         
-        client.business(req.params.id).then(response => {
-        let school = response.jsonBody;
-
-        Comment.find({ school_alias: { $eq: req.params.id } }).lean()
-        .then(comments => {
+        client.business(req.params.school_alias).then(response => {
+            let school = response.jsonBody;
+            let comments = getComments(req.params.school_alias)
             console.log(comments)
             res.render('reviews-show', {school, comments});
-        })
-        .catch(err => {
-          console.log(err.message);
-       });
-
-        // var comments = Comment.find({ school_alias: req.params.id }).exec();
-        // console.log('This is the comments', comments);
 
         }).catch(e => {
         console.log(e);
@@ -109,7 +114,6 @@ module.exports = app => {
     //     console.log(e);
     //     }); 
     //  })
-
 };
 
     

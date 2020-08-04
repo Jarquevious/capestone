@@ -1,9 +1,16 @@
 // Initialize express
 const express = require('express')
-const app = express()
 const exphbs = require('express-handlebars');
+const handlebars = require('handlebars');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
+const hbs = exphbs.create({
+  defaultLayout: 'main',
+  handlebars: allowInsecurePrototypeAccess(handlebars),
+});
+
+const app = express()
 
 // Use Body Parser
 app.use(bodyParser.json());

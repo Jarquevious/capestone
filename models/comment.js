@@ -11,10 +11,10 @@ const CommentSchema = new Schema({
 });
 
 // Always populate the author field
-CommentSchema
-    .pre('findOne', Populate('school_alias'))
-    .pre('find', Populate('school_alias'))
-    .pre('findOne', Populate('content'))
-    .pre('find', Populate('content'))
+// CommentSchema
+    // .pre('findOne', Populate('school_alias'))
+    // .pre('find', Populate('school_alias'))
+    // .pre('findOne', Populate('content'))
+    // .pre('find', Populate('content'))
     
 module.exports = mongoose.model("Comment", CommentSchema);
